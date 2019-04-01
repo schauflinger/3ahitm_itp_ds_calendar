@@ -1,0 +1,30 @@
+/*
+Background Colour: #cdb5b5
+Border Colour: #ffffff
+Font Colour: #000000
+Font: Roboto Light Regular
+Font Size: 40
+Show the table headings? true
+Override the template? true
+*/
+
+table {
+	border-collapse:collapse;
+	width: 100%;
+}
+
+th {
+	border: solid 20px;
+	padding: 10px;
+	text-align: center;
+}
+
+td {
+	border: solid 20px;
+	padding: 20px;
+	text-align: center;
+}
+
+tr {
+    border: solid 20px;
+}
