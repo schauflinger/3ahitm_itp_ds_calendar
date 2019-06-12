@@ -7,9 +7,6 @@ const port = 3000;
 //Use the public folder to provide static content
 app.use(express.static("public"));
 
-//Respond with index.html when a GET request is made to the homepage
-app.get("/", (req, res) => res.sendFile("index.html"));
-
 //API to insert values to Dataset in Xibo
 app.get("/sendDate", (request, response) => {
     let clientDateString = request.query.date;
