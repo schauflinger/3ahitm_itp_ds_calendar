@@ -11,14 +11,15 @@ app.use(express.static("public"));
 app.get("/sendDate", (request, response) => {
     let clientDateString = request.query.date;
     let clientTitleString = request.query.title;
-
+    let clientDate = new Date(clientDateString);
     //If date parameter does not exist or isn't valid, send 400
-    if (!clientTitleString || !clientDateString || isNaN(new Date(clientDateString).getTime())) {
+    if (!clientTitleString || !clientDateString || isNaN(clientDate.getTime())) {
         response.status(400).send({
             message: "Fill all the Fields"
         });
     } else {
-        addRowToDataSet(clientDateString, clientTitleString);
+        let dateString = `${getWithLeadingZero(clientDate.getDate())}.${getWithLeadingZero(clientDate.getMonth())}.${clientDate.getFullYear()}`;
+        addRowToDataSet(dateString, clientTitleString);
         response.send({
             message: "Added Date to the DataSet"
         });
@@ -93,4 +94,8 @@ function promiseRequest(options) {
             resolve(body);
         })
     });
+}
+
+function getWithLeadingZero(number) {
+    return number <= 9 ? "0" + number : number;
 }
