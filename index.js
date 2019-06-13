@@ -14,7 +14,7 @@ app.get("/sendDate", (request, response) => {
 
     //If date parameter does not exist or isn't valid, send 400
     if (!clientTitleString || !clientDateString || isNaN(new Date(clientDateString).getTime())) {
-        response.status(422).send({
+        response.status(400).send({
             message: "Fill all the Fields"
         });
     } else {
